@@ -4,17 +4,18 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Value;
 
 import java.util.Date;
 
 @Service
 public class JwtService {
 
-    // Clave secreta segura de al menos 256 bits (32 caracteres)
-    private static final String SECRET_KEY = "mi_clave_secreta_super_segura_y_larga_de_32_bytes_minimo!";
+    @Value("${app.jwt.secret}")
+    private String secretKey;
 
     private java.security.Key getSigningKey() {
-        byte[] keyBytes = SECRET_KEY.getBytes(java.nio.charset.StandardCharsets.UTF_8);
+        byte[] keyBytes = secretKey.getBytes(java.nio.charset.StandardCharsets.UTF_8);
         return io.jsonwebtoken.security.Keys.hmacShaKeyFor(keyBytes);
     }
 
