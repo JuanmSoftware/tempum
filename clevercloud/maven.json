@@ -4,6 +4,6 @@
     "goal": "package -DskipTests"
   },
   "deploy": {
-    "jarName": "./backend/target/demo-0.0.1-SNAPSHOT.jar"
+    "jarName": "./target/demo-0.0.1-SNAPSHOT.jar"
   }
 }
