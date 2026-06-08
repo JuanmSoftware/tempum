@@ -4,7 +4,7 @@ import { login, register } from '../services/authService';
 import { Mail, Lock, LogIn, Loader2, AlertCircle, User, Shield } from 'lucide-react';
 
 /**
- * Página de Login moderna con estética premium tipo SaaS.
+ * Página de Login 
  * Permite a los usuarios autenticarse o registrarse.
  */
 const Login = () => {
@@ -15,7 +15,7 @@ const Login = () => {
     const [rol, setRol] = useState('USER');
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
-    
+
     const navigate = useNavigate();
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -28,13 +28,13 @@ const Login = () => {
                 // Registrar nuevo usuario
                 await register({ nombre, email, password, rol });
             }
-            
+
             // Iniciar sesión automáticamente después de registrarse o iniciar sesión directamente
             const token = await login({ email, password });
-            
+
             // 1. Guardamos el token en localStorage con la clave "token"
             localStorage.setItem('token', token);
-            
+
             // 2. Redirigimos al usuario a la página de inicio protegida
             navigate('/');
         } catch (err: any) {
@@ -52,7 +52,7 @@ const Login = () => {
 
             {/* Contenedor tipo Card principal */}
             <div className="relative w-full max-w-md bg-white border border-slate-100 rounded-2xl shadow-xl shadow-slate-200/50 p-8 sm:p-10 transition-all duration-300 hover:shadow-2xl hover:shadow-slate-200/60">
-                
+
                 {/* Cabecera / Identidad visual */}
                 <div className="text-center mb-8">
                     <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600 text-white shadow-md shadow-blue-500/20 mb-4">
